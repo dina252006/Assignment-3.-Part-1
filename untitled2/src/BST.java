@@ -20,7 +20,6 @@ public class BST<K extends Comparable<K>, V> {
         root = put(root, key, val);
     }
 
-    // Private helper method to recursively insert a key-value pair into the BST
     private Node put(Node x, K key, V val) {
         if (x == null) {
             size++;
@@ -53,6 +52,7 @@ public class BST<K extends Comparable<K>, V> {
         return null;
     }
 
+    // Method to delete a node with the given key from the BST
     public void delete(K key) {
         root = delete(root, key);
     }
@@ -75,6 +75,7 @@ public class BST<K extends Comparable<K>, V> {
         return x;
     }
 
+    // Method to delete the node with the minimum key from the subtree rooted at x
     private Node deleteMin(Node x) {
         if (x.left == null) return x.right;
         x.left = deleteMin(x.left);
@@ -92,6 +93,7 @@ public class BST<K extends Comparable<K>, V> {
         return keys;
     }
 
+    // method to perform an inorder traversal
     private void inorder(Node x, ArrayList<K> keys) {
         if (x == null) return;
         inorder(x.left, keys);
