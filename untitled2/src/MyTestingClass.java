@@ -3,18 +3,18 @@ import java.util.Random;
 public class MyTestingClass {
 
     public static void main(String[] args) {
-        // Testing MyHashTable
+        // Creating hash table with TestingClass keys and Student values
         MyHashTable<TestingClass, Student> table = new MyHashTable<>();
         Random random = new Random();
 
-        // Adding random elements to MyHashTable
+        // Populating hash table with random key-value pairs
         for (int i = 0; i < 10000; i++) {
             TestingClass key = new TestingClass(random.nextInt(1000));
             Student value = new Student("Student " + i);
             table.put(key, value);
         }
 
-        // Printing number of elements in each bucket
+        // Counting elements in each hash table bucket
         MyHashTable.HashNode<TestingClass, Student>[] chainArray = table.getChainArray();
         for (int i = 0; i < chainArray.length; i++) {
             int count = 0;
@@ -26,17 +26,15 @@ public class MyTestingClass {
             System.out.println("Bucket " + i + ": " + count + " elements");
         }
 
-        // Testing BST
         BST<Integer, String> bst = new BST<>();
 
-        // Adding random elements to BST
+        // Populating BST with random key-value pairs
         for (int i = 0; i < 10000; i++) {
             int key = random.nextInt(1000);
             String value = "Value " + i;
             bst.put(key, value);
         }
 
-        // Printing the size of BST
         System.out.println("Size of BST: " + bst.size());
 
         // Iterating through BST and printing key-value pairs
@@ -45,7 +43,6 @@ public class MyTestingClass {
         }
     }
 
-    // Define MyTestingClass here with its own hashCode() method
     static class TestingClass {
         int value;
 
@@ -53,6 +50,7 @@ public class MyTestingClass {
             this.value = value;
         }
 
+        // Custom hashCode method
         @Override
         public int hashCode() {
             // Your custom hash code implementation
@@ -60,7 +58,7 @@ public class MyTestingClass {
         }
     }
 
-    // Define Student class here (assuming it's a simple class with a name field)
+    // Custom class Student with a name
     static class Student {
         String name;
 
